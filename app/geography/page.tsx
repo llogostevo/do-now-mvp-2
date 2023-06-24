@@ -2,7 +2,7 @@
 import useLLM from "usellm";
 import { useState } from "react";
 
-export default function Home() {
+export default function Geography() {
     const llm = useLLM();
     const [topic, setTopic] = useState("");
     const [result, setResult] = useState("");
