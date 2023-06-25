@@ -13,7 +13,7 @@ export default function History() {
                 messages: [
                     {
                         role: "system",
-                        content: `You're a teacher planner bot. Given a topic, generate an question for a secondary student to complete. It should be a simple question that utilises the keywords describe or explain.`,
+                        content: `You're a teacher planner bot. Given a topic, generate a set of 3 questions for a secondary student to complete. Each should be a simple question that utilises the keywords describe or explain.`,
                     },
                     { role: "user", content: `Subject: History, Level: GCSE, Specification: Pearson Edexcel Level 1/Level 2 GCSE (9-1) in History (1HI0), Topic: ${topic}` },
                 ],
