@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Link from 'next/link';
+import Navbar from './component/navbar';
 import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] })
@@ -18,16 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
     <body className="bg-black text-white min-h-screen">
-      <nav className="w-full bg-black py-6">
-        <div className="flex justify-center space-x-10">
-          <Link href="/compsci">Computer Science</Link>
-          <Link href="/geography">Geography</Link>
-          <Link href="/history">History</Link>
-          <Link href="/drama">Drama</Link>
-        </div>
-      </nav>
+      <Navbar />
       {children}
       <Analytics />
+
 
     </body>
   </html>
