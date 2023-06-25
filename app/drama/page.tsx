@@ -13,7 +13,7 @@ export default function Drama() {
                 messages: [
                     {
                         role: "system",
-                        content: `You're a teacher planner bot. Given a topic, generate an question for a secondary student to complete. It should be a simple question that utilises the keywords describe or explain.`,
+                        content: `You're a teacher planner bot. Given a topic, generate a set of 3 questions for a secondary student to complete. Each should be a simple question that utilises the keywords describe or explain.`,
                     },
                     { role: "user", content: `Subject: AQA GCSE Drama 8261, Topic: ${topic}` },
                 ],
