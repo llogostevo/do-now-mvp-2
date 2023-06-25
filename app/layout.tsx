@@ -22,6 +22,8 @@ export default function RootLayout({
         <div className="flex justify-center space-x-10">
           <Link href="/compsci">Computer Science</Link>
           <Link href="/geography">Geography</Link>
+          <Link href="/history">History</Link>
+          <Link href="/history">Drama</Link>
         </div>
       </nav>
       {children}
