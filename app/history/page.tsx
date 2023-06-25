@@ -28,7 +28,7 @@ export default function History() {
         <div className="min-h-screen mx-auto my-8 max-w-4xl px-4 sm:px-0">
             <h1 className="text-center mb-4 text-2xl sm:text-3xl">Do Now Generator</h1>
             <ul className="m-5">
-                <li className="p-1"><span className="font-bold">Subject</span>: Geography</li>
+                <li className="p-1"><span className="font-bold">Subject</span>: History</li>
                 <li className="p-1"><span className="font-bold">Level</span>: GCSE</li>
                 <li className="p-1"><span className="font-bold">Specification</span>: Pearson Edexcel Level 1/Level 2 GCSE 9-1 in History 1HI0</li>
             </ul>

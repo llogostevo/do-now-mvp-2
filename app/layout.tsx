@@ -23,7 +23,7 @@ export default function RootLayout({
           <Link href="/compsci">Computer Science</Link>
           <Link href="/geography">Geography</Link>
           <Link href="/history">History</Link>
-          <Link href="/history">Drama</Link>
+          <Link href="/drama">Drama</Link>
         </div>
       </nav>
       {children}
