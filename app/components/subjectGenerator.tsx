@@ -2,7 +2,13 @@
 import useLLM from "usellm";
 import { useState } from "react";
 
-export default function SubjectGenerator({ subjectName, level, specification }) {
+type SubjectGeneratorProps = {
+  subjectName: string;
+  level: string;
+  specification: string;
+};
+
+export default function SubjectGenerator({ subjectName, level, specification }: SubjectGeneratorProps) {
   const llm = useLLM();
   const [topic, setTopic] = useState("");
   const [result, setResult] = useState("");
@@ -29,7 +35,6 @@ export default function SubjectGenerator({ subjectName, level, specification }) 
   }
   return (
     <div className="min-h-screen mx-auto my-8 max-w-4xl px-4 sm:px-0">
-      <h1 className="text-center mb-4 text-2xl sm:text-3xl">Do Now Generator</h1>
       <ul className="m-5">
         <li className="p-1"><span className="font-bold">Subject</span>: {subjectName}</li>
         <li className="p-1"><span className="font-bold">Level</span>: {level}</li>
