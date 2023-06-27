@@ -8,7 +8,7 @@ type ExamBoard = 'OCR' | 'Edexcel' | 'WJEC' | 'AQA';
 
 export default function Subject() {
   const [level, setLevel] = useState<Level>('GCSE');
-  const [subject, setSubject] = useState<Subject>('Geography');
+  const [subject, setSubject] = useState<Subject>('Art');
   const [examBoard, setExamBoard] = useState<ExamBoard>('OCR');
 
   return (
