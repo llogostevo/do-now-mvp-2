@@ -1,3 +1,9 @@
+/*
+Further actions: 
+- buttons can be pulled into their own components
+- will need to pass in props 
+*/
+
 "use client"
 import useLLM, { OpenAIMessage } from "usellm";
 import { useState } from "react";
@@ -73,7 +79,7 @@ export default function SubjectGenerator({ subjectName, level, specification }: 
 
   // ANSWER BUTTON IS CLICKED AND AN ANSWER RETURNED
   async function handleAnswer() {
-    const newHistory = [...history, { role: "user", content: `send me the the answer for each question. Make each answer concise.` }];
+    const newHistory = [...history, { role: "user", content: `send me the the answer for each question. Make each answer concise and at the level identified previously.` }];
     setHistory(newHistory);
     try {
       await llm.chat({
