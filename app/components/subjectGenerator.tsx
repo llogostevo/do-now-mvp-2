@@ -19,7 +19,7 @@ export default function SubjectGenerator({ subjectName, level, specification }: 
   const [topic, setTopic] = useState("");
   const [result, setResult] = useState("");
   const [answer, setAnswers] = useState("");
-  
+
   const [reset, setShowReset] = useState(false);
   const [isResultReturned, setIsResultReturned] = useState(false);
   const [isAnswerReturned, setIsAnswerReturned] = useState(false);
@@ -43,35 +43,32 @@ export default function SubjectGenerator({ subjectName, level, specification }: 
     
     Question 3 
     Question: <the question>`,
-  },
-  {
-    role: "user",
-    content: `<Subject: ${subjectName}>, <Level: ${level}>, <Exam Board: ${specification}>, <Topic: ${topic}>`
-  }]);
+  }
+  ]);
 
   async function handleClick() {
     if (!topic) {
       return;
     }
+    console.log(subjectName)
 
-    console.log(history)
     // update the history so it includes the topic 
-    const newHistory = [...history, { role: "user", content: topic }];
+    const userMessage = { role: "user", content: `<Subject: ${subjectName}>, <Level: ${level}>, <Exam Board: ${specification}>, <Topic: ${topic}>` };
+    const newHistory = [...history, userMessage];
     setHistory(newHistory);
-    setTopic("");
-    console.log(history)
-
     try {
       await llm.chat({
         messages: newHistory,
         stream: true,
         onStream: ({ message }) => {
           setHistory([...newHistory, message]),
-          setResult(message.content);
+            setResult(message.content);
           setIsResultReturned(true);
           setShowReset(true);
         }
       });
+      console.log(newHistory)
+
     } catch (error) {
       console.error("Something went wrong!", error);
     }
@@ -91,7 +88,10 @@ export default function SubjectGenerator({ subjectName, level, specification }: 
           setShowReset(true);
 
         }
+
       });
+      console.log(newHistory)
+
     } catch (error) {
       console.error("Something went wrong!", error);
     }
@@ -119,15 +119,12 @@ export default function SubjectGenerator({ subjectName, level, specification }: 
           
           Question 3 
           Question: <the question>`,
-      },
-      {
-        role: "user",
-        content: `<Subject: ${subjectName}>, <Level: ${level}>, <Exam Board: ${specification}>, <Topic: ${topic}>`
       }]
     );
     setIsResultReturned(false);
     setIsAnswerReturned(false);
     setShowReset(false);
+    setTopic("");
   }
 
   return (
@@ -138,7 +135,7 @@ export default function SubjectGenerator({ subjectName, level, specification }: 
         <li className="p-1"><span className="font-bold">Specification</span>: {specification}</li>
       </ul>
       {/* show reset button if result or answer has been returned */}
-    {reset && (
+      {reset && (
         <button
           className="rounded border border-yellow-700 text-yellow-400 hover:bg-yellow-500 hover:text-black p-2 m-4 transition-colors duration-200"
           onClick={handleReset}
@@ -172,17 +169,17 @@ export default function SubjectGenerator({ subjectName, level, specification }: 
         <div className="mt-4 whitespace-pre-wrap border p-4">{answer}</div>
       )}
       {/* show answer button if returned */}
-      {isResultReturned && (
+      {!isAnswerReturned && isResultReturned && (
         <button
-        className="rounded border border-green-700 text-green-400 hover:bg-green-500 hover:text-black p-2 m-4 transition-colors duration-200"
-        onClick={handleAnswer}
+          className="rounded border border-green-700 text-green-400 hover:bg-green-500 hover:text-black p-2 m-4 transition-colors duration-200"
+          onClick={handleAnswer}
         >
           Click me for answers!
         </button>
       )}
 
-{/* show reset button if result or answer has been returned */}
-    {reset && (
+      {/* show reset button if result or answer has been returned */}
+      {reset && (
         <button
           className="rounded border border-yellow-700 text-yellow-400 hover:bg-yellow-500 hover:text-black p-2 m-4 transition-colors duration-200"
           onClick={handleReset}
